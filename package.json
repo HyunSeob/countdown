@@ -1,5 +1,5 @@
 {
-  "name": "countdown",
+  "name": "@hyunseob/countdown",
   "version": "0.0.1",
   "description": "A simple, lightweight countdown renderer",
   "main": "lib/index.js",
