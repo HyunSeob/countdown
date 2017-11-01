@@ -1,9 +1,25 @@
 declare module '@hyunseob/countdown' {
-  /**
-   * Render countdown string in the `element`, from the `future` and repeat rendering every 1 second.
-   */
-  export default function showCountdown(
-    element: HTMLElement,
-    future: Date
-  ): void;
+  interface Count {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  }
+
+  export default class Countdown {
+    /**
+     * Create Countdown instance which is targeting the `future`.
+     */
+    constructor(future: Date);
+
+    /**
+     * Get a count data which indicate distance from the `future`
+     */
+    public differenceFromNow(): Count;
+
+    /**
+     * Observe a count data. Subscriber will be fired every seconds, with count data.
+     */
+    public observe(subscriber: (count: Count) => any): void;
+  }
 }

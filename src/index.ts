@@ -1,3 +1,3 @@
-import showCountdown from './dom';
+import Countdown from './countdown';
 
-export default showCountdown;
+export default Countdown;

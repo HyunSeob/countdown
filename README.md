@@ -1,2 +1,2 @@
 # countdown
-A simple, lightweight countdown renderer
+A simple, lightweight countdown module
