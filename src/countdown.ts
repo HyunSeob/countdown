@@ -10,8 +10,18 @@ interface Count {
   seconds: number;
 }
 
+type Subscriber = (count: Count) => any;
+
 class Countdown {
-  constructor(private future: Date) {}
+  private subscribers: Subscriber[] = [];
+
+  constructor(private future: Date) {
+    setInterval(() => {
+      this.subscribers.forEach(subscriber =>
+        subscriber(this.differenceFromNow())
+      );
+    }, MS_IN_SECOND);
+  }
 
   public differenceFromNow() {
     const now = new Date();
@@ -37,10 +47,8 @@ class Countdown {
     };
   }
 
-  public observe(subscriber: (count: Count) => any) {
-    setInterval(() => {
-      subscriber(this.differenceFromNow());
-    }, MS_IN_SECOND);
+  public observe(subscriber: Subscriber) {
+    this.subscribers.push(subscriber);
   }
 }
 

@@ -5,6 +5,7 @@ declare module '@hyunseob/countdown' {
     minutes: number;
     seconds: number;
   }
+  type Subscriber = (count: Count) => any;
 
   export default class Countdown {
     /**
@@ -20,6 +21,6 @@ declare module '@hyunseob/countdown' {
     /**
      * Observe a count data. Subscriber will be fired every seconds, with count data.
      */
-    public observe(subscriber: (count: Count) => any): void;
+    public observe(subscriber: Subscriber): void;
   }
 }
